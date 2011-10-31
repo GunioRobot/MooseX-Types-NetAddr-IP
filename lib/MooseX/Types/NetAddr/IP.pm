@@ -16,17 +16,17 @@ subtype NetAddrIP,   as 'NetAddr::IP';  # can be either IPv4 or IPv6
 subtype NetAddrIPv4, as 'NetAddr::IP';  # can be only IPv4
 subtype NetAddrIPv6, as 'NetAddr::IP';  # can be only IPv6
 
-coerce NetAddrIP, 
-    from Str, 
-    via { 
-        return NetAddr::IP->new( $_ ) 
+coerce NetAddrIP,
+    from Str,
+    via {
+        return NetAddr::IP->new( $_ )
             or die "'$_' is not an IP address.\n";
     };
 
-coerce NetAddrIP, 
-    from ArrayRef[Str], 
-    via { 
-        return NetAddr::IP->new( @$_ ) 
+coerce NetAddrIP,
+    from ArrayRef[Str],
+    via {
+        return NetAddr::IP->new( @$_ )
             or die "'@$_' is not an IP address.\n";
     };
 
@@ -77,7 +77,7 @@ This package provides internet address types for Moose.
 
 NetAddrIP
 
-    Coerces from Str and ArrayRef via "new" in NetAddr::IP. 
+    Coerces from Str and ArrayRef via "new" in NetAddr::IP.
 
 NetAddrIPv4
 
